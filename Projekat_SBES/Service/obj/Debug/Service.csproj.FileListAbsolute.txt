@@ -8,3 +8,13 @@ C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\obj\Debug\Service.csproj.CopyComplete
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\obj\Debug\Service.exe
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\obj\Debug\Service.pdb
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\bin\Debug\Service.exe.config
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\bin\Debug\Service.exe
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\bin\Debug\Service.pdb
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\bin\Debug\Common.dll
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\bin\Debug\Common.pdb
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\obj\Debug\Service.csprojAssemblyReference.cache
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\obj\Debug\Service.csproj.CopyComplete
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\obj\Debug\Service.exe
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Service\obj\Debug\Service.pdb

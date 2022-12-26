@@ -10,11 +10,12 @@ namespace Common
     [DataContract]
     public class Korisnik
     {
+       
         private string imeKorisnika;
         private string prezimeKorisnika;
         private bool aktivan;
         private int brojKnjiga;
-        private Knjiga knjiga;
+      
 
         [DataMember]
         public string ImeKorisnika { get => imeKorisnika; set => imeKorisnika = value; }
@@ -28,16 +29,16 @@ namespace Common
         [DataMember]
         public int BrojKnjiga { get => brojKnjiga; set => brojKnjiga = value; }
 
-        [DataMember]
-        public Knjiga Knjiga { get => knjiga; set => knjiga = value; }
+       
 
-        public Korisnik(string imeKorisnika, string prezimeKorisnika, bool aktivan, int brojKnjiga, Knjiga knjiga)
+        public Korisnik(string imeKorisnika, string prezimeKorisnika, bool aktivan, int brojKnjiga)
         {
+            
             this.ImeKorisnika = imeKorisnika;
             this.PrezimeKorisnika = prezimeKorisnika;
             this.Aktivan = aktivan;
             this.BrojKnjiga = brojKnjiga;
-            this.Knjiga = knjiga;
+           
         }
     }
 }

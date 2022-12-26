@@ -8,20 +8,22 @@ using System.Threading.Tasks;
 namespace Common
 {
     [DataContract]
-    public enum zanrKnjige {[EnumMember] Triler, [EnumMember] Horor, [EnumMember] Drama, [EnumMember] Misterija, [EnumMember] Komedija }
+    public enum ZanrKnjige {[EnumMember] Triler, [EnumMember] Horor, [EnumMember] Drama, [EnumMember] Misterija, [EnumMember] Komedija }
 
     [DataContract]
     public class Knjiga
     {
-        private zanrKnjige zanr;
-        public string nazivKnjige;
-        public Autor autor;
+       
+        private ZanrKnjige zanr;
+        private string nazivKnjige;
+        private Autor autor;
 
-        public Knjiga(zanrKnjige zanr, string nazivKnjige, Autor autor)
+        public Knjiga(ZanrKnjige zanr, string nazivKnjige, Autor autor)
         {
-            this.nazivKnjige = nazivKnjige;
-            this.autor = autor;
+            
             this.Zanr = zanr;
+            this.NazivKnjige = nazivKnjige;
+            this.Autor = autor;
         }
 
         [DataMember]
@@ -31,7 +33,7 @@ namespace Common
         public Autor Autor { get => autor; set => autor = value; }
 
         [DataMember]
-        public zanrKnjige Zanr { get => zanr; set => zanr = value; }
-
+        public ZanrKnjige Zanr { get => zanr; set => zanr = value; }
+       
     }
 }

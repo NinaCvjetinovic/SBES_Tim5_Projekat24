@@ -10,15 +10,18 @@ namespace Common
     [DataContract]
     public class Autor
     {
+        
         private string imeAutora;
         private string prezimeAutora;
         private string godinaRodjenja;
 
+
         public Autor(string imeAutora, string prezimeAutora, string godinaRodjenja)
         {
-            this.imeAutora = imeAutora;
-            this.prezimeAutora = prezimeAutora;
-            this.godinaRodjenja = godinaRodjenja;
+            
+            this.ImeAutora = imeAutora;
+            this.PrezimeAutora = prezimeAutora;
+            this.GodinaRodjenja = godinaRodjenja;
         }
 
         [DataMember]
