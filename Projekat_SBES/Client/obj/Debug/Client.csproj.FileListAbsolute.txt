@@ -1,0 +1,10 @@
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Client.exe.config
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Client.exe
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Client.pdb
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Common.dll
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Common.pdb
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.exe
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.pdb
