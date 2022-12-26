@@ -11,19 +11,19 @@ namespace Common
     public interface IBiblioteka
     {
         [OperationContract]
-        bool DodajKnjigu(int idKnjige);
+        bool DodajKnjigu(int idKnjige, Knjiga knjiga);
         [OperationContract]
         bool ObrisiKnjigu(int idKnjige);
         [OperationContract]
         bool IzmijeniKnjigu(int idKnjige, Knjiga knjiga);
         [OperationContract]
-        bool DodajAutora(int idAutora);
+        bool DodajAutora(int idAutora,Autor autor);
         [OperationContract]
         bool ObrisiAutora(int idAutora);
         [OperationContract]
         bool IzmijeniAutora(int idAutora, Autor autor);
         [OperationContract]
-        bool DodajKorisnika(int idKorisnika);
+        bool DodajKorisnika(int idKorisnika, Korisnik korisnik);
         [OperationContract]
         bool ObrisiKorisnika(int idKorisnika);
         [OperationContract]
