@@ -146,9 +146,9 @@ namespace Service
 
         public bool ObrisiKnjigu(int idKnjige)
         {
-            if (Database.autori.ContainsKey(idKnjige))
+            if (Database.knjige.ContainsKey(idKnjige))
             {
-                Database.autori.Remove(idKnjige);
+                Database.knjige.Remove(idKnjige);
                 Console.WriteLine("Knjiga uspesno obrisana");
 
                 return true;
@@ -162,9 +162,9 @@ namespace Service
 
         public bool ObrisiKorisnika(int idKorisnika)
         {
-            if (Database.autori.ContainsKey(idKorisnika))
+            if (Database.korisnici.ContainsKey(idKorisnika))
             {
-                Database.autori.Remove(idKorisnika);
+                Database.korisnici.Remove(idKorisnika);
                 Console.WriteLine("Korisnik uspesno obrisan");
 
                 return true;
