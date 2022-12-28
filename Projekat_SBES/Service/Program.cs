@@ -20,11 +20,11 @@ namespace Service
 
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:9999/Biblioteka";
-
-            binding.Security.Mode = SecurityMode.Transport;
-            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
-            binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
-
+            
+            //binding.Security.Mode = SecurityMode.Transport;
+            //binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
+            //binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
+            
             ServiceHost host = new ServiceHost(typeof(Biblioteka));
             host.AddServiceEndpoint(typeof(IBiblioteka), binding, address);
 
@@ -34,13 +34,21 @@ namespace Service
 
   
             host.Credentials.ClientCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
-
           
-           // host.Credentials.ServiceCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, srvCertCN);
+          
+            host.Credentials.ServiceCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, srvCertCN);
 
-            host.Open();
+            try
+            {
+                host.Open();
 
-            Console.WriteLine("Servis je uspesno pokrenut.");
+                Console.WriteLine("Servis je uspesno pokrenut.");
+                Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             Console.WriteLine("Korisnik koji je pokrenuo servis:" + WindowsIdentity.GetCurrent().Name);
 

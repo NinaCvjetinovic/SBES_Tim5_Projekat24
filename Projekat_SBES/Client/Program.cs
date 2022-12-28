@@ -19,23 +19,25 @@ namespace Client
             string srvCertCN = "wcfservice";
 
             NetTcpBinding binding = new NetTcpBinding();
-            string address = "net.tcp://localhost:9999/Biblioteka";
+            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
 
-            // X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, srvCertCN);
-           // EndpointAddress address = new EndpointAddress(new Uri("net.tcp://localhost:9999/Biblioteka"),
-                                    //  new X509CertificateEndpointIdentity(srvCert));
+            //string address = "net.tcp://localhost:9999/Biblioteka";
+
+            X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, srvCertCN);
+            EndpointAddress address = new EndpointAddress(new Uri("net.tcp://localhost:9999/Biblioteka"),
+                                      new X509CertificateEndpointIdentity(srvCert));
 
         
 
      
-            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
-
+            //binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
+            
            
-
-            binding.Security.Mode = SecurityMode.Transport;
-            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
-            binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
-
+            
+           // binding.Security.Mode = SecurityMode.Transport;
+            //binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
+            //binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
+            
             Console.WriteLine("Korisnik koji je pokrenuo klijenta:" + WindowsIdentity.GetCurrent().Name);
 
             Console.WriteLine("------------------------------------------------------");
