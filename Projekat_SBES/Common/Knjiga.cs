@@ -34,6 +34,11 @@ namespace Common
 
         [DataMember]
         public ZanrKnjige Zanr { get => zanr; set => zanr = value; }
-       
+
+        public override string ToString()
+        {
+            return String.Format("Knjiga: {0} {1}, Autor: {2}", NazivKnjige, Zanr, Autor);
+        }
+
     }
 }

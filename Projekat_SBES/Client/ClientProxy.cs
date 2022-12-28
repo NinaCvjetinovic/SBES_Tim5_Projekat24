@@ -24,7 +24,14 @@ namespace Client
             try
             {
                 retValue = factory.DodajAutora(idAutora, autor);
-                Console.WriteLine("Dodavanje autora uspesno.");
+                if(retValue == true)
+                {
+                    Console.WriteLine("Dodavanje autora uspesno.");
+                }
+                else
+                {
+                    Console.WriteLine("Dodavanje autora neuspesno.");
+                }
             }
             catch (Exception e)
             {
@@ -39,7 +46,14 @@ namespace Client
             try
             {
                 retValue = factory.DodajKnjigu(idKnjige, knjiga);
-                Console.WriteLine("Dodavanje knjige uspesno.");
+                if(retValue == true)
+                {
+                    Console.WriteLine("Dodavanje knjige uspesno.");
+                }
+                else
+                {
+                    Console.WriteLine("Dodavanje knjige neuspesno.");
+                }
             }
             catch (Exception e)
             {
@@ -54,7 +68,15 @@ namespace Client
            try
             {
                 retValue = factory.DodajKorisnika(idKorisnika, korisnik);
-                Console.WriteLine("Dodavanje korisnika uspesno.");
+                if(retValue == true)
+                {
+                    Console.WriteLine("Dodavanje korisnika uspesno.");
+                }
+                else
+                {
+                    Console.WriteLine("Dodavanje korisnika neuspesno.");
+                }
+                
             }
             catch(Exception e)
             {
@@ -69,7 +91,14 @@ namespace Client
             try
             {
                 retValue = factory.IzmijeniAutora(idAutora, autor);
-                Console.WriteLine("Izmena autora uspesna.");
+                if(retValue == true)
+                {
+                    Console.WriteLine("Izmena autora uspesna.");
+                }
+                else
+                {
+                    Console.WriteLine("Izmena autora neuspesna.");
+                }
             }
             catch (Exception e)
             {
@@ -84,7 +113,14 @@ namespace Client
             try
             {
                 retValue = factory.IzmijeniKnjigu(idKnjige, knjiga);
-                Console.WriteLine("Izmena knjige uspesna.");
+                if(retValue == true)
+                {
+                    Console.WriteLine("Izmena knjige uspesna.");
+                }
+                else
+                {
+                    Console.WriteLine("Izmena knjige neuspesna.");
+                }
             }
             catch (Exception e)
             {
@@ -99,7 +135,15 @@ namespace Client
             try
             {
                 retValue = factory.IzmijeniKorisnika(idKorisnika, korisnik);
-                Console.WriteLine("Izmena korisnika uspesna.");
+                if(retValue == true)
+                {
+                    Console.WriteLine("Izmena korisnika uspesna.");
+                }
+                else
+                {
+                    Console.WriteLine("Izmena korisnika neuspesna.");
+                }
+                
             }
             catch (Exception e)
             {
@@ -114,7 +158,15 @@ namespace Client
             try
             {
                 retValue = factory.IznajmiKnjigu(idKorisnika, nazivKnjige);
-                Console.WriteLine("Iznajmljivanje knjige uspesno.");
+                if(retValue == true)
+                {
+                    Console.WriteLine("Iznajmljivanje knjige uspesno.");
+                }
+                else
+                {
+                    Console.WriteLine("Iznajmljivanje knjige neuspesno.");
+                }
+                
             }
             catch (Exception e)
             {
@@ -129,7 +181,15 @@ namespace Client
             try
             {
                 retValue = factory.ObrisiAutora(idAutora);
-                Console.WriteLine("Brisanje autora uspesno.");
+                if (retValue == true)
+                {
+                    Console.WriteLine("Brisanje autora uspesno.");
+                }
+                else
+                {
+                    Console.WriteLine("Brisanje autora neuspesno.");
+                }
+                
             }
             catch (Exception e)
             {
@@ -144,7 +204,14 @@ namespace Client
             try
             {
                 retValue = factory.ObrisiKnjigu(idKnjige);
-                Console.WriteLine("Brisanje knjige uspesno.");
+                if (retValue == true)
+                {
+                    Console.WriteLine("Brisanje knjige uspesno.");
+                }
+                else
+                {
+                    Console.WriteLine("Brisanje knjige neuspesno.");
+                }
             }
             catch (Exception e)
             {
@@ -159,7 +226,14 @@ namespace Client
             try
             {
                 retValue = factory.ObrisiKorisnika(idKorisnika);
-                Console.WriteLine("Brisanje korisnika uspesno.");
+                if (retValue == true)
+                {
+                    Console.WriteLine("Brisanje korisnika uspesno.");
+                }
+                else
+                {
+                    Console.WriteLine("Brisanje korisnika neuspesno.");
+                }
             }
             catch (Exception e)
             {

@@ -1,0 +1,6 @@
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\bin\Debug\Manager.dll
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\bin\Debug\Manager.pdb
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csprojAssemblyReference.cache
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csproj.CoreCompileInputs.cache
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.dll
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.pdb
