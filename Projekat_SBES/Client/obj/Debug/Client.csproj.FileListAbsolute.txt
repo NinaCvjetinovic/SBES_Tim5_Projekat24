@@ -32,3 +32,17 @@ C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin
 C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Manager.pdb
 C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Manager.dll
 C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Manager.pdb
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Manager.dll
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Manager.pdb
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Client.exe.config
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Client.exe
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Client.pdb
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Common.dll
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Manager.dll
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Common.pdb
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\bin\Debug\Manager.pdb
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.csproj.CopyComplete
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.exe
+C:\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Client\obj\Debug\Client.pdb

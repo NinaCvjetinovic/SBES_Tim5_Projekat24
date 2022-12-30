@@ -13,7 +13,7 @@ namespace Service
         {
             if (Database.autori.ContainsKey(idAutora))
             {
-                Console.WriteLine("Autor sa tim id-em vec postoji");
+                Console.WriteLine("Autor sa datim id-em vec postoji.");
                 return false;
             }
             else
@@ -30,13 +30,13 @@ namespace Service
         {
             if (Database.autori.ContainsKey(idKnjige))
             {
-                Console.WriteLine("Knjiga sa tim id-em vec postoji");
+                Console.WriteLine("Knjiga sa datim id-em vec postoji.");
                 return false;
             }
             else
             {
                 Database.knjige.Add(idKnjige, knjiga);
-                Console.WriteLine("Knjiga uspesno dodata");
+                Console.WriteLine("Knjiga je uspesno dodata.");
                 return true;
             }
         }
@@ -47,13 +47,13 @@ namespace Service
         {
             if (Database.korisnici.ContainsKey(idKorisnika))
             {
-                Console.WriteLine("Korisnik sa tim id-em vec postoji");
+                Console.WriteLine("Korisnik sa datim id-em vec postoji.");
                 return false;
             }
             else
             {
                 Database.korisnici.Add(idKorisnika, korisnik);
-                Console.WriteLine("Korisnik uspesno dodat");
+                Console.WriteLine("Korisnik uspesno dodat.");
                 return true;
             }
         }
@@ -63,12 +63,12 @@ namespace Service
             if (Database.autori.ContainsKey(idAutora))
             {
                 Database.autori[idAutora] = autor;
-                Console.WriteLine("Autor uspesno izmenjen");
+                Console.WriteLine("Autor uspesno izmenjen.");
                 return true;
             }
             else
             {
-                Console.WriteLine("Autor sa tim id-em ne postoji");
+                Console.WriteLine("Autor sa datim id-em ne postoji.");
                 return false;
             }
         }
@@ -78,12 +78,12 @@ namespace Service
             if (Database.knjige.ContainsKey(idKnjige))
             {
                 Database.knjige[idKnjige] = knjiga;
-                Console.WriteLine("Knjiga uspesno izmenjena");
+                Console.WriteLine("Knjiga uspesno izmenjena.");
                 return true;
             }
             else
             {
-                Console.WriteLine("Knjiga sa tim id-em ne postoji");
+                Console.WriteLine("Knjiga sa datim id-em ne postoji.");
                 return false;
             }
         }

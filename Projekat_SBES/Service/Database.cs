@@ -18,26 +18,24 @@ namespace Service
             Knjiga k1 = new Knjiga(ZanrKnjige.Drama, "Alhemicar", new Autor("Paulo", "Koeljo", "1947"));
             Knjiga k2 = new Knjiga(ZanrKnjige.Horor, "Isijavanje", new Autor("Stephen", "King", "1947"));
 
-           
-                knjige.Add(1, k1);
-                knjige.Add(2, k2);
-            
+            knjige.Add(1, k1);
+            knjige.Add(2, k2);
 
             Autor a1 = new Autor("Ivo", "Andric", "1892");
             Autor a2 = new Autor("Mesa", "Selimovic", "1910");
 
-          
-                autori.Add(1, a1);
-                autori.Add(2, a2);
-            
-          
+            autori.Add(1, a1);
+            autori.Add(2, a2);
+
 
             Korisnik ko1 = new Korisnik("Marko", "Markovic", false, 0);
             Korisnik ko2 = new Korisnik("Pavle", "Pavlovic", true, 7);
-           
-                korisnici.Add(1, ko1);
-                korisnici.Add(2, ko2);
-           
+
+            korisnici.Add(1, ko1);
+            korisnici.Add(2, ko2);
+
+
+
         }
     }
 }

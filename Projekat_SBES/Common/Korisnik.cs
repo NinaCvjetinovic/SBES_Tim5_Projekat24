@@ -15,7 +15,8 @@ namespace Common
         private string prezimeKorisnika;
         private bool aktivan;
         private int brojKnjiga;
-      
+
+        
 
         [DataMember]
         public string ImeKorisnika { get => imeKorisnika; set => imeKorisnika = value; }
@@ -44,6 +45,7 @@ namespace Common
         public override string ToString()
         {
             return String.Format("Ime korisnika : {0}, prezime korisnika : {1}, broj knjiga : {2}", ImeKorisnika, PrezimeKorisnika, BrojKnjiga);
+
         }
     }
 }

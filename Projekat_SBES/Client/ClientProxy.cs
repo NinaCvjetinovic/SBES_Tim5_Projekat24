@@ -72,6 +72,10 @@ namespace Client
                     Console.WriteLine("Dodavanje knjige neuspesno.");
                 }
             }
+            catch (FaultException<SecurityException> e)
+            {
+                Console.WriteLine("Error: {0}", e.Detail.Message);
+            }
             catch (Exception e)
             {
                 Console.WriteLine("Error: {0}", e.Message);
@@ -95,7 +99,11 @@ namespace Client
                 }
                 
             }
-            catch(Exception e)
+            catch (FaultException<SecurityException> e)
+            {
+                Console.WriteLine("Error: {0}", e.Detail.Message);
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("Error: {0}", e.Message);
             }
@@ -116,6 +124,10 @@ namespace Client
                 {
                     Console.WriteLine("Izmena autora neuspesna.");
                 }
+            }
+            catch (FaultException<SecurityException> e)
+            {
+                Console.WriteLine("Error: {0}", e.Detail.Message);
             }
             catch (Exception e)
             {
@@ -139,6 +151,10 @@ namespace Client
                     Console.WriteLine("Izmena knjige neuspesna.");
                 }
             }
+            catch (FaultException<SecurityException> e)
+            {
+                Console.WriteLine("Error: {0}", e.Detail.Message);
+            }
             catch (Exception e)
             {
                 Console.WriteLine("Error: {0}", e.Message);
@@ -160,6 +176,7 @@ namespace Client
                 {
                     Console.WriteLine("Izmena korisnika neuspesna.");
                 }
+
                 
             }
             catch (Exception e)
@@ -183,7 +200,10 @@ namespace Client
                 {
                     Console.WriteLine("Iznajmljivanje knjige neuspesno.");
                 }
-                
+            }
+            catch (FaultException<SecurityException> e)
+            {
+                Console.WriteLine("Error: {0}", e.Detail.Message);
             }
             catch (Exception e)
             {
@@ -208,6 +228,10 @@ namespace Client
                 }
                 
             }
+            catch (FaultException<SecurityException> e)
+            {
+                Console.WriteLine("Error: {0}", e.Detail.Message);
+            }
             catch (Exception e)
             {
                 Console.WriteLine("Error: {0}", e.Message);
@@ -230,6 +254,10 @@ namespace Client
                     Console.WriteLine("Brisanje knjige neuspesno.");
                 }
             }
+            catch (FaultException<SecurityException> e)
+            {
+                Console.WriteLine("Error: {0}", e.Detail.Message);
+            }
             catch (Exception e)
             {
                 Console.WriteLine("Error: {0}", e.Message);
@@ -251,6 +279,10 @@ namespace Client
                 {
                     Console.WriteLine("Brisanje korisnika neuspesno.");
                 }
+            }
+            catch (FaultException<SecurityException> e)
+            {
+                Console.WriteLine("Error: {0}", e.Detail.Message);
             }
             catch (Exception e)
             {
