@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autor.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="IBiblioteka.cs" />
     <Compile Include="Knjiga.cs" />
     <Compile Include="Korisnik.cs" />

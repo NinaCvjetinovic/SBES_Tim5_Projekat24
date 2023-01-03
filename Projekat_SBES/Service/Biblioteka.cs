@@ -28,7 +28,7 @@ namespace Service
 
         public bool DodajKnjigu(int idKnjige, Knjiga knjiga)
         {
-            if (Database.autori.ContainsKey(idKnjige))
+            if (Database.knjige.ContainsKey(idKnjige))
             {
                 Console.WriteLine("Knjiga sa datim id-em vec postoji.");
                 return false;
