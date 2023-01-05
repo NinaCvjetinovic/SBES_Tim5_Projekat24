@@ -19,10 +19,7 @@ namespace Service
            
 
             NetTcpBinding binding = new NetTcpBinding();
-           
             string address = "net.tcp://localhost:49685/Biblioteka";
-
-            
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
@@ -32,9 +29,34 @@ namespace Service
             host.AddServiceEndpoint(typeof(IBiblioteka), binding, address);
 
 
+
+
+            NetTcpBinding binding1 = new NetTcpBinding();
+            binding1.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
+
+            string address1 = "net.tcp://localhost:49673/Biblioteka";
+            ServiceHost host1 = new ServiceHost(typeof(Biblioteka));
+            host1.AddServiceEndpoint(typeof(IBiblioteka), binding1, address1);
+
+            string srvCertCN = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
+
+            ///Custom validation mode enables creation of a custom validator - CustomCertificateValidator
+            host1.Credentials.ClientCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.Custom;
+            host1.Credentials.ClientCertificate.Authentication.CustomCertificateValidator = new ServiceCertValidator();
+
+            ///If CA doesn't have a CRL associated, WCF blocks every client because it cannot be validated
+            host1.Credentials.ClientCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
+
+            ///Set appropriate service's certificate on the host. Use CertManager class to obtain the certificate based on the "srvCertCN"
+            host1.Credentials.ServiceCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, srvCertCN);
+
+
+           
+
             try
             {
                 host.Open();
+                host1.Open();
 
                 Console.WriteLine("Servis je uspesno pokrenut.");
                 Console.ReadLine();

@@ -21,6 +21,7 @@ namespace Client
 
             NetTcpBinding binding = new NetTcpBinding();
             NetTcpBinding binding1 = new NetTcpBinding();
+            binding1.Security.Mode = SecurityMode.Transport;
             binding1.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
 
             string address = "net.tcp://localhost:49685/Biblioteka";
@@ -34,6 +35,7 @@ namespace Client
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
             binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
 
+           
             Console.WriteLine("Korisnik koji je pokrenuo klijenta:" + WindowsIdentity.GetCurrent().Name);
 
             Console.WriteLine("------------------------------------------------------");
@@ -55,7 +57,7 @@ namespace Client
                 // A matching certificate was found.
 
               
-                    using (ClientProxySertifikati proxy1 = new ClientProxySertifikati(binding1, address1))
+                    using (ClientProxy proxy1 = new ClientProxy(binding1, address1))
                     {
                         Console.WriteLine("Klijent sertifikatima je uspesno pokrenut.");
 

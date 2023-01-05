@@ -15,7 +15,27 @@ namespace Client
 
     {
         IBiblioteka factory;
-       
+        
+
+        public ClientProxy(NetTcpBinding binding1, EndpointAddress address1) : base(binding1, address1)
+        {
+            /// cltCertCN.SubjectName should be set to the client's username. .NET WindowsIdentity class provides information about Windows user running the given process
+            string cltCertCN = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
+
+            this.Credentials.ServiceCertificate.Authentication.CertificateValidationMode = System.ServiceModel.Security.X509CertificateValidationMode.Custom;
+            this.Credentials.ServiceCertificate.Authentication.CustomCertificateValidator = new ClientCertValidator();
+            this.Credentials.ServiceCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
+
+            /// Set appropriate client's certificate on the channel. Use CertManager class to obtain the certificate based on the "cltCertCN"
+            this.Credentials.ClientCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, cltCertCN);
+
+
+            //binding1.Security.Mode = SecurityMode.Transport;
+            // binding1.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
+
+            factory = this.CreateChannel();
+        }
+
 
         public ClientProxy(NetTcpBinding binding, string address) : base(binding,address)
         {
@@ -30,7 +50,8 @@ namespace Client
             try
             {
                 retValue = factory.DodajAutora(idAutora, autor);
-                if(retValue == true)
+                //retValue = factory1.DodajAutora(idAutora, autor);
+                if (retValue == true)
                 {
                     Console.WriteLine("Dodavanje autora uspesno.");
                 }
@@ -52,7 +73,8 @@ namespace Client
             try
             {
                 retValue = factory.DodajKnjigu(idKnjige, knjiga);
-                if(retValue == true)
+               // retValue = factory1.DodajKnjigu(idKnjige, knjiga);
+                if (retValue == true)
                 {
                     Console.WriteLine("Dodavanje knjige uspesno.");
                 }
@@ -78,7 +100,8 @@ namespace Client
            try
             {
                 retValue = factory.DodajKorisnika(idKorisnika, korisnik);
-                if(retValue == true)
+               // retValue = factory1.DodajKorisnika(idKorisnika, korisnik);
+                if (retValue == true)
                 {
                     Console.WriteLine("Dodavanje korisnika uspesno.");
                 }
@@ -105,7 +128,8 @@ namespace Client
             try
             {
                 retValue = factory.IzmijeniAutora(idAutora, autor);
-                if(retValue == true)
+                //retValue = factory1.IzmijeniAutora(idAutora, autor);
+                if (retValue == true)
                 {
                     Console.WriteLine("Izmena autora uspesna.");
                 }
@@ -131,7 +155,8 @@ namespace Client
             try
             {
                 retValue = factory.IzmijeniKnjigu(idKnjige, knjiga);
-                if(retValue == true)
+                //retValue = factory1.IzmijeniKnjigu(idKnjige, knjiga);
+                if (retValue == true)
                 {
                     Console.WriteLine("Izmena knjige uspesna.");
                 }
@@ -157,7 +182,8 @@ namespace Client
             try
             {
                 retValue = factory.IzmijeniKorisnika(idKorisnika, korisnik);
-                if(retValue == true)
+                //retValue = factory1.IzmijeniKorisnika(idKorisnika, korisnik);
+                if (retValue == true)
                 {
                     Console.WriteLine("Izmena korisnika uspesna.");
                 }
@@ -181,7 +207,8 @@ namespace Client
             try
             {
                 retValue = factory.IznajmiKnjigu(idKorisnika, nazivKnjige);
-                if(retValue == true)
+                //retValue = factory1.IznajmiKnjigu(idKorisnika, nazivKnjige);
+                if (retValue == true)
                 {
                     Console.WriteLine("Iznajmljivanje knjige uspesno.");
                 }
@@ -207,6 +234,7 @@ namespace Client
             try
             {
                 retValue = factory.ObrisiAutora(idAutora);
+               // retValue = factory1.ObrisiAutora(idAutora);
                 if (retValue == true)
                 {
                     Console.WriteLine("Brisanje autora uspesno.");
@@ -234,6 +262,7 @@ namespace Client
             try
             {
                 retValue = factory.ObrisiKnjigu(idKnjige);
+                //retValue = factory1.ObrisiKnjigu(idKnjige);
                 if (retValue == true)
                 {
                     Console.WriteLine("Brisanje knjige uspesno.");
@@ -260,6 +289,7 @@ namespace Client
             try
             {
                 retValue = factory.ObrisiKorisnika(idKorisnika);
+                //retValue = factory1.ObrisiKorisnika(idKorisnika);
                 if (retValue == true)
                 {
                     Console.WriteLine("Brisanje korisnika uspesno.");
