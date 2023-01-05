@@ -40,21 +40,17 @@ namespace Client
 
             Console.WriteLine("------------------------------------------------------");
 
-            // Set the subject name of the certificate to look for.
             string subjectName = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
 
-            // Open the store for the current user.
             X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
             store.Open(OpenFlags.ReadOnly);
 
-            // Find the certificate with the specified subject name.
             X509Certificate2Collection certificates = store.Certificates.Find(X509FindType.FindBySubjectName, subjectName, false);
 
-            // Check if a matching certificate was found.
             if (certificates.Count > 0)
             {
                 Console.WriteLine("A certificate with subject name '{0}' was found.", subjectName);
-                // A matching certificate was found.
+                
 
               
                     using (ClientProxy proxy1 = new ClientProxy(binding1, address1))
@@ -88,7 +84,6 @@ namespace Client
             }
             else
             {
-                // No matching certificate was found.
                 Console.WriteLine("No certificate with subject name '{0}' was found.", subjectName);
 
                 using (ClientProxy proxy = new ClientProxy(binding, address))
@@ -113,17 +108,7 @@ namespace Client
 
             }
 
-            // Close the store.
             store.Close();
-
-
-
-            
-            
-
-               
-          
-
             Console.ReadLine();
         }
     }
