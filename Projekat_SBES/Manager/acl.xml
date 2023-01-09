@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<acl>
+	<user name="pera">
+		<permission type="read">Read</permission>
+		<permission type="delete">Delete</permission>
+	</user>
+	<user name="wcfclient">
+		<permission type="read">Read</permission>
+		<permission type="delete">Delete</permission>
+		<permission type="modify">Modify</permission>
+		<permission type="manage">Manage</permission>
+	</user>
+</acl>
