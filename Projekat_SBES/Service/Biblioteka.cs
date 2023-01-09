@@ -1,9 +1,12 @@
 ﻿using Common;
+using Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Service
 {
@@ -29,17 +32,61 @@ namespace Service
 
         public bool DodajKnjigu(int idKnjige, Knjiga knjiga)
         {
-            if (Database.knjige.ContainsKey(idKnjige))
+            bool hasPermission = false;
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            var users = doc.Root.Elements("user");
+            bool provjera = false;
+
+            foreach (var userElement in users)
             {
-                Console.WriteLine("Knjiga sa datim id-em vec postoji.");
-                return false;
+
+                string username = userElement.Attribute("name").Value;
+                string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+
+                if (username == client)
+                {
+                    List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                    foreach (var i in permissions)
+                    {
+                        if (i == "read")
+                        {
+                            hasPermission = true;
+                            provjera = true;
+                            break;
+
+                        }
+                        else
+                        {
+                            hasPermission = false;
+                            provjera = true;
+                            break;
+                        }
+                    }
+
+                }
+                if (provjera)
+                    break;
+            }
+            if (hasPermission == true)
+            {
+                if (Database.knjige.ContainsKey(idKnjige))
+                {
+                    Console.WriteLine("Knjiga sa datim id-em vec postoji.");
+                    return false;
+                }
+                else
+                {
+                    Database.knjige.Add(idKnjige, knjiga);
+                    Console.WriteLine("Knjiga je uspesno dodata.");
+                    return true;
+                }
             }
             else
             {
-                Database.knjige.Add(idKnjige, knjiga);
-                Console.WriteLine("Knjiga je uspesno dodata.");
-                return true;
+                Console.WriteLine("Nema permisiju");
             }
+            return false;
         }
 
         
