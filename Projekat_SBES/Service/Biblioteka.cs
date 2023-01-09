@@ -11,6 +11,7 @@ namespace Service
     {
         public bool DodajAutora(int idAutora,Autor autor)
         {
+            
             if (Database.autori.ContainsKey(idAutora))
             {
                 Console.WriteLine("Autor sa datim id-em vec postoji.");

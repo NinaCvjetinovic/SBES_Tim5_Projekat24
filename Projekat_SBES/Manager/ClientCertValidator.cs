@@ -10,28 +10,39 @@ namespace Manager
 {
     public class ClientCertValidator : X509CertificateValidator
     {
+        X509Chain chain;
+
+        public ClientCertValidator()
+        {
+            X509Certificate2 trustedRoot = new X509Certificate2(@"C:\TrustedRoot\TestCA.cer");
+            chain = new X509Chain();
+            chain.ChainPolicy.ExtraStore.Add(trustedRoot);
+            chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllFlags;
+
+        }
+
 
         public override void Validate(X509Certificate2 certificate)
         {
-            //DateTime notAfter = certificate.NotAfter;
+       
             if (certificate.Subject.Equals(certificate.Issuer))
             {
                 throw new Exception("Sertifikat je self-signed.");
             }
-            /*if (notAfter < DateTime.Now.AddMonths(15))
+            else if (DateTime.Now > certificate.NotAfter || DateTime.Now.AddMonths(15) <= certificate.NotAfter)
             {
-                throw new Exception("Sertifikat vazi manje od 15 meseci.");
-            }*//*
+
+                throw new Exception("Serverski sertifikat nije trenutno validan ili njegova valjanost ističe u roku od 15 meseci.");
+            }
+            else if(!chain.Build(certificate))
             {
-                DateTime expirationDate = DateTime.Parse(certificate.GetExpirationDateString());
-                if (expirationDate < DateTime.Now.AddMonths(15))
-                {
-                    throw new Exception($"Sertifikat istice [{expirationDate}]");
-                }
+                throw new Exception("Serverski sertifikat nije izdat od strane tela kome verujemo.");
+            }
+            else
+            {
+                Console.WriteLine("Serverski sertifikat je validan.");
+            }
 
-            }*/
-
-            
         }
     }
 }
