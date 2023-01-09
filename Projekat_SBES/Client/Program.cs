@@ -70,6 +70,7 @@ namespace Client
                             Console.WriteLine(k2);
                             proxy1.ObrisiKnjigu(3);
                             proxy1.ObrisiKnjigu(6);
+                            
                             Console.ReadLine();
                         }
                         catch (Exception e)
@@ -102,6 +103,12 @@ namespace Client
                     Console.WriteLine(k2);
                     proxy.ObrisiKnjigu(3);
                     proxy.ObrisiKnjigu(6);
+
+                    Autor a = new Autor("Ivo", "Andric", "1444");
+                    proxy.DodajAutora(100, a);
+                    Korisnik kor = new Korisnik("Mika", "Peric", true, 2);
+                    proxy.DodajKorisnika(500, kor);
+
                     Console.ReadLine();
                 }
 
