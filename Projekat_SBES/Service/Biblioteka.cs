@@ -15,7 +15,7 @@ namespace Service
         public bool DodajAutora(int idAutora,Autor autor)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provera = false;
 
@@ -40,8 +40,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provera = true;
-                            break;
+                         
                         }
                     }
 
@@ -75,7 +74,7 @@ namespace Service
         public bool DodajKnjigu(int idKnjige, Knjiga knjiga)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provjera = false;
 
@@ -101,8 +100,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provjera = true;
-                            break;
+                        
                         }
                     }
 
@@ -136,7 +134,7 @@ namespace Service
         public bool DodajKorisnika(int idKorisnika, Korisnik korisnik)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provera = false;
             foreach (var userElement in users)
@@ -160,8 +158,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provera = true;
-                            break;
+                           
                         }
                     }
 
@@ -193,7 +190,7 @@ namespace Service
         public bool IzmijeniAutora(int idAutora, Autor autor)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provera = false;
             foreach (var userElement in users)
@@ -217,8 +214,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provera = true;
-                            break;
+                       
                         }
                     }
 
@@ -251,7 +247,7 @@ namespace Service
         public bool IzmijeniKnjigu(int idKnjige, Knjiga knjiga)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provera = false;
             foreach (var userElement in users)
@@ -275,8 +271,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provera = true;
-                            break;
+                         
                         }
                     }
 
@@ -309,7 +304,7 @@ namespace Service
         public bool IzmijeniKorisnika(int idKorisnika, Korisnik korisnik)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provera = false;
             foreach (var userElement in users)
@@ -333,8 +328,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provera = true;
-                            break;
+                        
                         }
                     }
 
@@ -366,7 +360,7 @@ namespace Service
         public bool IznajmiKnjigu(int idKorisnika, string nazivKnjige)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provera = false;
             foreach (var userElement in users)
@@ -390,8 +384,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provera = true;
-                            break;
+                            
                         }
                     }
 
@@ -434,7 +427,7 @@ namespace Service
         public bool ObrisiAutora(int idAutora)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provera = false;
             foreach (var userElement in users)
@@ -458,8 +451,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provera = true;
-                            break;
+                        
                         }
                     }
 
@@ -492,7 +484,7 @@ namespace Service
         public bool ObrisiKnjigu(int idKnjige)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provera = false;
             foreach (var userElement in users)
@@ -516,8 +508,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provera = true;
-                            break;
+                         
                         }
                     }
 
@@ -550,7 +541,7 @@ namespace Service
         public bool ObrisiKorisnika(int idKorisnika)
         {
             bool hasPermission = false;
-            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
             var users = doc.Root.Elements("user");
             bool provera = false;
             foreach (var userElement in users)
@@ -574,8 +565,7 @@ namespace Service
                         else
                         {
                             hasPermission = false;
-                            provera = true;
-                            break;
+                            
                         }
                     }
 
