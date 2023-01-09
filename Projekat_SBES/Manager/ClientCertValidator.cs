@@ -10,17 +10,21 @@ namespace Manager
 {
     public class ClientCertValidator : X509CertificateValidator
     {
+        
         X509Chain chain;
 
         public ClientCertValidator()
         {
-            X509Certificate2 trustedRoot = new X509Certificate2(@"C:\TrustedRoot\TestCA.cer");
+            X509Store store = new X509Store(StoreName.Root, StoreLocation.CurrentUser);
+            store.Open(OpenFlags.ReadOnly);
+            X509Certificate2 trustedRoot = store.Certificates.Find(X509FindType.FindBySubjectName, "TestCA", false)[0];
+            store.Close();
+
             chain = new X509Chain();
             chain.ChainPolicy.ExtraStore.Add(trustedRoot);
             chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllFlags;
 
         }
-
 
         public override void Validate(X509Certificate2 certificate)
         {
@@ -29,6 +33,8 @@ namespace Manager
             {
                 throw new Exception("Sertifikat je self-signed.");
             }
+
+            
             else if (DateTime.Now > certificate.NotAfter || DateTime.Now.AddMonths(15) <= certificate.NotAfter)
             {
 
@@ -43,6 +49,7 @@ namespace Manager
                 Console.WriteLine("Serverski sertifikat je validan.");
             }
 
+            
         }
     }
 }

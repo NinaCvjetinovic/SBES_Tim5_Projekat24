@@ -60,6 +60,7 @@ namespace Client
                         try
                         {
                             Knjiga k = new Knjiga(ZanrKnjige.Drama, "Lovac na zmajeve", new Autor("Haled", "Hoseini", "1965"));
+                            Korisnik kor = new Korisnik("Milica", "Milutinovic", true, 3);
                             proxy1.DodajKnjigu(3, k);
                             Console.WriteLine(k);
                             Knjiga k1 = new Knjiga(ZanrKnjige.Triler, "Jedini izlaz", new Autor("Marko", "Popovic", "1978"));
@@ -70,6 +71,9 @@ namespace Client
                             Console.WriteLine(k2);
                             proxy1.ObrisiKnjigu(3);
                             proxy1.ObrisiKnjigu(6);
+                            proxy1.DodajKorisnika(888, kor);
+                            proxy1.IznajmiKnjigu(888, "Lovac na zmajeve");
+                        
                             
                             Console.ReadLine();
                         }
@@ -101,6 +105,8 @@ namespace Client
                     Knjiga k2 = new Knjiga(ZanrKnjige.Misterija, "Igra", new Autor("Skot", "Kerso", "1982"));
                     proxy.IzmijeniKnjigu(4, k2);
                     Console.WriteLine(k2);
+                    Knjiga k3 = new Knjiga(ZanrKnjige.Komedija, "Bio jednom jedan strah", new Autor("Jovica", "Tisma", "1958"));
+                    proxy.DodajKnjigu(5, k3);
                     proxy.ObrisiKnjigu(3);
                     proxy.ObrisiKnjigu(6);
 
@@ -108,7 +114,7 @@ namespace Client
                     proxy.DodajAutora(100, a);
                     Korisnik kor = new Korisnik("Mika", "Peric", true, 2);
                     proxy.DodajKorisnika(500, kor);
-
+                    proxy.IznajmiKnjigu(500, "Bio jednom jedan strah");
                     Console.ReadLine();
                 }
 

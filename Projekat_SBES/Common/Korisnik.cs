@@ -15,7 +15,6 @@ namespace Common
         private string prezimeKorisnika;
         private bool aktivan;
         private int brojKnjiga;
-
         
 
         [DataMember]
@@ -30,7 +29,6 @@ namespace Common
         [DataMember]
         public int BrojKnjiga { get => brojKnjiga; set => brojKnjiga = value; }
 
-       
 
         public Korisnik(string imeKorisnika, string prezimeKorisnika, bool aktivan, int brojKnjiga)
         {

@@ -16,6 +16,7 @@ namespace Manager
             X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine,
                 Formatter.ParseName(WindowsIdentity.GetCurrent().Name));
 
+      
             string clientOrganization = certificate.SubjectName.Name.Split(',')[0].Split('=')[1];
             string serverOrganization = srvCert.SubjectName.Name.Split(',')[0].Split('=')[1];
             
@@ -24,7 +25,8 @@ namespace Manager
             {
                 throw new Exception("Klijentski sertifikat nije izdat od strane istog tela kao serverski.");
             }
-
+            
+            
             else if (DateTime.Now > certificate.NotAfter || DateTime.Today.AddMonths(3) <= certificate.NotAfter)
             {
 
