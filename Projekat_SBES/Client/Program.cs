@@ -16,7 +16,7 @@ namespace Client
         static void Main(string[] args)
         {
 
-
+            //System.Diagnostics.Debugger.Launch();
             string srvCertCN = "wcfservice";
 
             NetTcpBinding binding = new NetTcpBinding();
@@ -73,9 +73,16 @@ namespace Client
                             proxy1.ObrisiKnjigu(6);
                             proxy1.DodajKorisnika(888, kor);
                             proxy1.IznajmiKnjigu(888, "Lovac na zmajeve");
-                        
-                            
-                            Console.ReadLine();
+
+                        Autor a = new Autor("Ivo", "Andric", "1444");
+                        proxy1.DodajAutora(100, a);
+                        Korisnik kor2 = new Korisnik("Mika", "Peric", true, 2);
+                        proxy1.DodajKorisnika(500, kor2);
+                        proxy1.IznajmiKnjigu(500, "Bio jednom jedan strah");
+                        Console.ReadLine();
+
+
+                        Console.ReadLine();
                         }
                         catch (Exception e)
                         {

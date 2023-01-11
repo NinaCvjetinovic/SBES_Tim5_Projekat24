@@ -16,7 +16,8 @@ namespace Service
     {
         static void Main(string[] args)
         {
-           
+
+            //System.Diagnostics.Debugger.Launch();
 
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:49685/Biblioteka";
@@ -48,7 +49,8 @@ namespace Service
             host1.Credentials.ServiceCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, srvCertCN);
 
 
-           
+          
+
 
             try
             {
@@ -56,6 +58,7 @@ namespace Service
                 host1.Open();
 
                 Console.WriteLine("Servis je uspesno pokrenut.");
+                
                 Console.ReadLine();
             }
             catch (Exception e)

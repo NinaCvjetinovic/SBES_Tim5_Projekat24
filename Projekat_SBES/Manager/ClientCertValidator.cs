@@ -35,7 +35,7 @@ namespace Manager
             }
 
             
-            else if (DateTime.Now > certificate.NotAfter || DateTime.Now.AddMonths(15) <= certificate.NotAfter)
+            else if (DateTime.Now > certificate.NotAfter || DateTime.Now.AddMonths(15) >= certificate.NotAfter)
             {
 
                 throw new Exception("Serverski sertifikat nije trenutno validan ili njegova valjanost ističe u roku od 15 meseci.");
@@ -44,10 +44,12 @@ namespace Manager
             {
                 throw new Exception("Serverski sertifikat nije izdat od strane tela kome verujemo.");
             }
+            
             else
             {
                 Console.WriteLine("Serverski sertifikat je validan.");
             }
+            
 
             
         }

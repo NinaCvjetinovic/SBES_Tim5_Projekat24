@@ -17,8 +17,9 @@ namespace Manager
                 Formatter.ParseName(WindowsIdentity.GetCurrent().Name));
 
       
-            string clientOrganization = certificate.SubjectName.Name.Split(',')[0].Split('=')[1];
-            string serverOrganization = srvCert.SubjectName.Name.Split(',')[0].Split('=')[1];
+            string clientOrganization = certificate.SubjectName.Name.Split(',')[1].Split('=')[1];
+            string serverOrganization = srvCert.SubjectName.Name.Split(',')[1].Split('=')[1];
+      
             
 
             if (!certificate.Issuer.Equals(srvCert.Issuer))
@@ -27,7 +28,8 @@ namespace Manager
             }
             
             
-            else if (DateTime.Now > certificate.NotAfter || DateTime.Today.AddMonths(3) <= certificate.NotAfter)
+            
+            else if (DateTime.Now > certificate.NotAfter || DateTime.Today.AddMonths(3) >= certificate.NotAfter)
             {
 
                 throw new Exception("Klijentski sertifikat nije trenutno validan ili njegova valjanost ističe u roku od 3 meseca.");
@@ -37,6 +39,7 @@ namespace Manager
             {
                 throw new Exception("Ime organizacije u SubjectName-u klijentskog sertifikata se razlikuje od imena organizacije kod serverskog sertifikata.");
             }
+            
             else
             {
                 Console.WriteLine("Klijentski sertifikat je validan.");

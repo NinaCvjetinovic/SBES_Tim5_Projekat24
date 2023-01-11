@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace Service
 {
     public class Biblioteka : IBiblioteka
     {
+
+        
         public bool DodajAutora(int idAutora,Autor autor)
         {
             bool hasPermission = false;
@@ -25,29 +28,68 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+                store.Open(OpenFlags.ReadOnly);
+
+                X509Certificate2Collection certificates = store.Certificates.Find(X509FindType.FindBySubjectName, client, false);
+
+                if (certificates.Count > 0)
                 {
-                    List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+                    string organizacija = client.Split(',')[1].Split('=')[1];
+                    string ime = client.Split(',')[0].Split('=')[1];
 
-                    foreach (var i in permissions)
+                    if (username == ime)
                     {
-                        if (i == "read")
-                        {
-                            hasPermission = true;
-                            provera = true;
-                            break;
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
-                        }
-                        else
+                        foreach (var i in permissions)
                         {
-                            hasPermission = false;
-                         
+                            if (i == "read")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
                         }
                     }
+                    if (provera)
+                        break;
 
+                    store.Close();
                 }
-                if (provera)
-                    break;
+                else
+                {
+
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                        foreach (var i in permissions)
+                        {
+                            if (i == "read")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
+                        }
+
+                    }
+                    if (provera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {

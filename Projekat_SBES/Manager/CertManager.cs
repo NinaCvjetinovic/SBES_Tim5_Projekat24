@@ -21,13 +21,19 @@ namespace Manager
 		{
 			X509Store store = new X509Store(storeName, storeLocation);
 			store.Open(OpenFlags.ReadOnly);
+		
 
 			X509Certificate2Collection certificate2Collection = store.Certificates.Find(X509FindType.FindBySubjectName, subjectName, true);
 
 			foreach (X509Certificate2 cert in certificate2Collection)
 			{
-				if (cert.SubjectName.Name.Equals(string.Format("CN={0}", subjectName)))
+
+				string organizacija = cert.SubjectName.Name.Split(',')[1].Split('=')[1];
+				string ime = cert.SubjectName.Name.Split(',')[0].Split('=')[1];
+				if (cert.SubjectName.Name.Equals(string.Format("CN={0},OU={1}", ime, organizacija))) ;
 					return cert;
+				
+				
 			}
 			return null;
 		}
