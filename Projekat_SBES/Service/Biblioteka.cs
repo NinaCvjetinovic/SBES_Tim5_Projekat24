@@ -28,17 +28,15 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-                store.Open(OpenFlags.ReadOnly);
-
-                X509Certificate2Collection certificates = store.Certificates.Find(X509FindType.FindBySubjectName, client, false);
-
-                if (certificates.Count > 0)
+                string ime = "";
+                if (client.Contains(','))
                 {
-                    string organizacija = client.Split(',')[1].Split('=')[1];
-                    string ime = client.Split(',')[0].Split('=')[1];
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
 
-                    if (username == ime)
+                
+
+                if (username == ime)
                     {
                         List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -57,12 +55,10 @@ namespace Service
 
                             }
                         }
-                    }
+                }
                     if (provera)
                         break;
 
-                    store.Close();
-                }
                 else
                 {
 
@@ -127,7 +123,13 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                string ime = "";
+                if (client.Contains(','))
+                {
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
+
+                if (username == ime)
                 {
                     List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -146,10 +148,32 @@ namespace Service
                         
                         }
                     }
-
+                
                 }
-                if (provjera)
-                    break;
+                    if (provjera)
+                        break;
+                else
+                {
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+                        foreach (var i in permissions)
+                        {
+                            if (i == "read")
+                            {
+                                hasPermission = true;
+                                provjera = true;
+                                break;
+                            }
+                            else
+                            {
+                                hasPermission = false;
+                            }
+                        }
+                    }
+                    if (provjera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {
@@ -185,7 +209,13 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                string ime = "";
+                if (client.Contains(','))
+                {
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
+
+                if (username == ime)
                 {
                     List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -206,8 +236,34 @@ namespace Service
                     }
 
                 }
-                if (provera)
-                    break;
+                    if (provera)
+                        break;
+                else
+                {
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                        foreach (var i in permissions)
+                        {
+                            if (i == "read")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
+                        }
+
+                    }
+                    if (provera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {
@@ -241,7 +297,13 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                string ime = "";
+                if (client.Contains(','))
+                {
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
+
+                if (username == ime)
                 {
                     List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -262,8 +324,34 @@ namespace Service
                     }
 
                 }
-                if (provera)
-                    break;
+                    if (provera)
+                        break;
+                else
+                {
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                        foreach (var i in permissions)
+                        {
+                            if (i == "modify")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
+                        }
+
+                    }
+                    if (provera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {
@@ -298,7 +386,13 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                string ime = "";
+                if (client.Contains(','))
+                {
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
+
+                if (username == ime)
                 {
                     List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -319,8 +413,34 @@ namespace Service
                     }
 
                 }
-                if (provera)
-                    break;
+                    if (provera)
+                        break;
+                else
+                {
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                        foreach (var i in permissions)
+                        {
+                            if (i == "modify")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
+                        }
+
+                    }
+                    if (provera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {
@@ -355,7 +475,13 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                string ime = "";
+                if (client.Contains(','))
+                {
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
+
+                if (username == ime)
                 {
                     List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -376,8 +502,34 @@ namespace Service
                     }
 
                 }
-                if (provera)
-                    break;
+                    if (provera)
+                        break;
+                else
+                {
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                        foreach (var i in permissions)
+                        {
+                            if (i == "modify")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
+                        }
+
+                    }
+                    if (provera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {
@@ -411,7 +563,13 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                string ime = "";
+                if (client.Contains(','))
+                {
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
+
+                if (username == ime)
                 {
                     List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -432,8 +590,34 @@ namespace Service
                     }
 
                 }
-                if (provera)
-                    break;
+                    if (provera)
+                        break;
+                else
+                {
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                        foreach (var i in permissions)
+                        {
+                            if (i == "manage")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
+                        }
+
+                    }
+                    if (provera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {
@@ -478,7 +662,13 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                string ime = "";
+                if (client.Contains(','))
+                {
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
+
+                if (username == ime)
                 {
                     List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -499,8 +689,34 @@ namespace Service
                     }
 
                 }
-                if (provera)
-                    break;
+                    if (provera)
+                        break;
+                else
+                {
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                        foreach (var i in permissions)
+                        {
+                            if (i == "delete")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
+                        }
+
+                    }
+                    if (provera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {
@@ -535,7 +751,13 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                string ime = "";
+                if (client.Contains(','))
+                {
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
+
+                if (username == ime)
                 {
                     List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -556,8 +778,34 @@ namespace Service
                     }
 
                 }
-                if (provera)
-                    break;
+                    if (provera)
+                        break;
+                else
+                {
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                        foreach (var i in permissions)
+                        {
+                            if (i == "delete")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
+                        }
+
+                    }
+                    if (provera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {
@@ -592,7 +840,13 @@ namespace Service
                 string username = userElement.Attribute("name").Value;
                 string client = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
 
-                if (username == client)
+                string ime = "";
+                if (client.Contains(','))
+                {
+                    ime = client.Split(',')[0].Split('=')[1];
+                }
+
+                if (username == ime)
                 {
                     List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
 
@@ -613,8 +867,34 @@ namespace Service
                     }
 
                 }
-                if (provera)
-                    break;
+                    if (provera)
+                        break;
+                else
+                {
+                    if (username == client)
+                    {
+                        List<string> permissions = userElement.Elements("permission").Select(p => p.Attribute("type").Value).ToList();
+
+                        foreach (var i in permissions)
+                        {
+                            if (i == "delete")
+                            {
+                                hasPermission = true;
+                                provera = true;
+                                break;
+
+                            }
+                            else
+                            {
+                                hasPermission = false;
+
+                            }
+                        }
+
+                    }
+                    if (provera)
+                        break;
+                }
             }
             if (hasPermission == true)
             {

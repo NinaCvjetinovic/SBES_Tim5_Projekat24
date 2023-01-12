@@ -16,3 +16,5 @@ C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.dll
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.pdb
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csproj.AssemblyReference.cache
+C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.AuditEventFile.resources
+C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csproj.GenerateResource.cache
