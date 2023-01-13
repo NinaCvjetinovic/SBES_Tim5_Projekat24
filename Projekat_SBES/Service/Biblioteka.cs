@@ -22,13 +22,13 @@ namespace Service
 
         public Biblioteka()
         {
-            _textFilePath = @"C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt";
-            _xmlFilePath = @"C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml";
+            _textFilePath = @"C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt";
+            _xmlFilePath = @"C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml";
             _fileLogger = new FileLogger(_textFilePath, _xmlFilePath);
         }
 
-        public Biblioteka(string textFilePath = @"C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt",
-                          string xmlFilePath = @"C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml")
+        public Biblioteka(string textFilePath = @"C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt",
+                          string xmlFilePath = @"C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml")
         {
             _textFilePath = textFilePath;
             _xmlFilePath = xmlFilePath;
@@ -113,18 +113,77 @@ namespace Service
                 if (Database.autori.ContainsKey(idAutora))
                 {
                     Console.WriteLine("Autor sa datim id-em vec postoji.");
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Dodavanje autora",
+                        Result = "Autorizacija neuspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return false;
                 }
                 else
                 {
                     Database.autori.Add(idAutora, autor);
                     Console.WriteLine("Autor uspesno dodat");
+                    var log = new LogEntry
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Dodavanje autora",
+                        Result = "Autorizacija uspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return true;
                 }
             }
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Dodavanje autora",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
         }
@@ -202,25 +261,27 @@ namespace Service
                 {
                     Console.WriteLine("Knjiga sa datim id-em vec postoji.");
                     //kreiramo LogEntry i logujemo u odgovarajuću datoteku
-                    /*
+                    
                     LogEntry log = new LogEntry()
                     {
                         Timestamp = DateTime.Now,
-                        Username = ServiceSecurityContext.Current.WindowsIdentity.Name,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
                         Action = "Dodavanje knjige",
-                        Result = false
+                        Result = "Autorizacija neuspesna"
                     };
-                    if (ServiceSecurityContext.Current.WindowsIdentity != null)
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
                     {
-                        _fileLogger.LogToTextFile(log);
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+                        
                     }
-                    else
-                    {
-                        _fileLogger.LogToXmlFile(log);
-                    }
-                    */
-                    
-
                     return false;
                 }
                 else
@@ -228,23 +289,29 @@ namespace Service
                     Database.knjige.Add(idKnjige, knjiga);
                     Console.WriteLine("Knjiga je uspesno dodata.");
                     //logovanje uspeha
-                    /*
+                    
                     var log = new LogEntry
                     {
                         Timestamp = DateTime.Now,
-                        Username = ServiceSecurityContext.Current.PrimaryIdentity.Name,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
                         Action = "Dodavanje knjige",
-                        Result = true
+                        Result = "Autorizacija uspesna"
                     };
-                    if (ServiceSecurityContext.Current.WindowsIdentity != null)
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
                     {
-                        _fileLogger.LogToTextFile(log);
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+                        
                     }
-                    else
-                    {
-                        _fileLogger.LogToXmlFile(log);
-                    }
-                    */
+                    
+                    
                     return true;
                 }
                    
@@ -253,6 +320,25 @@ namespace Service
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Dodavanje knjige",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
         }
@@ -331,18 +417,77 @@ namespace Service
                 if (Database.korisnici.ContainsKey(idKorisnika))
                 {
                     Console.WriteLine("Korisnik sa datim id-em vec postoji.");
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Dodavanje korisnika",
+                        Result = "Autorizacija neuspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return false;
                 }
                 else
                 {
                     Database.korisnici.Add(idKorisnika, korisnik);
                     Console.WriteLine("Korisnik uspesno dodat.");
+                    var log = new LogEntry
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Dodavanje korisnika",
+                        Result = "Autorizacija uspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return true;
                 }
             }
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Dodavanje korisnika",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
         }
@@ -420,17 +565,76 @@ namespace Service
                 {
                     Database.autori[idAutora] = autor;
                     Console.WriteLine("Autor uspesno izmenjen.");
+                    var log = new LogEntry
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Izmena autora",
+                        Result = "Autorizacija uspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return true;
                 }
                 else
                 {
                     Console.WriteLine("Autor sa datim id-em ne postoji.");
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Izmena autora",
+                        Result = "Autorizacija neuspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return false;
                 }
             }
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Izmena autora",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
             
@@ -509,17 +713,77 @@ namespace Service
                 {
                     Database.knjige[idKnjige] = knjiga;
                     Console.WriteLine("Knjiga uspesno izmenjena.");
+                    var log = new LogEntry
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Izmena knjige",
+                        Result = "Autorizacija uspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return true;
+                    
                 }
                 else
                 {
                     Console.WriteLine("Knjiga sa datim id-em ne postoji.");
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Izmena knjige",
+                        Result = "Autorizacija neuspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return false;
                 }
             }
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Izmena knjige",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
             
@@ -598,17 +862,76 @@ namespace Service
                 {
                     Database.korisnici[idKorisnika] = korisnik;
                     Console.WriteLine("Korisnik uspesno izmenjen");
+                    var log = new LogEntry
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Izmena korisnika",
+                        Result = "Autorizacija uspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return true;
                 }
                 else
                 {
                     Console.WriteLine("Korisnik sa tim id-em ne postoji");
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Izmena korisnika",
+                        Result = "Autorizacija neuspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return false;
                 }
             }
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Izmena korisnika",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
         }
@@ -690,6 +1013,26 @@ namespace Service
                         {
                             Database.korisnici[idKorisnika].BrojKnjiga++;
                             Console.WriteLine("Knjiga uspesno iznajmljena");
+                            var log = new LogEntry
+                            {
+                                Timestamp = DateTime.Now,
+                                Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                                Action = "Iznajmljivanje knjige",
+                                Result = "Autorizacija uspesna"
+                            };
+                            string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                            if (i != null)
+                            {
+                                if (i.Contains(','))
+                                {
+                                    _fileLogger.LogToTextFile(log);
+                                }
+                                else
+                                {
+                                    _fileLogger.LogToXmlFile(log);
+                                }
+
+                            }
                             return true;
                         }
                         Console.WriteLine("Korisnik ima vise od pet knjiga");
@@ -701,12 +1044,51 @@ namespace Service
                 else
                 {
                     Console.WriteLine("Korisnik sa tim id-em ne postoji");
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Iznajmljivanje knjige",
+                        Result = "Autorizacija neuspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return false;
                 }
             }
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Iznajmljivanje knjige",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
             
@@ -785,18 +1167,76 @@ namespace Service
                 {
                     Database.autori.Remove(idAutora);
                     Console.WriteLine("Autor uspesno obrisan");
+                    var log = new LogEntry
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Brisanje autora",
+                        Result = "Autorizacija uspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
 
+                    }
                     return true;
                 }
                 else
                 {
                     Console.WriteLine("Ne postoji autor sa datim id-em");
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Brisanje autora",
+                        Result = "Autorizacija neuspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return false;
                 }
             }
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Brisanje autora",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
         }
@@ -874,18 +1314,76 @@ namespace Service
                 {
                     Database.knjige.Remove(idKnjige);
                     Console.WriteLine("Knjiga uspesno obrisana");
+                    var log = new LogEntry
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Brisanje knjige",
+                        Result = "Autorizacija uspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
 
+                    }
                     return true;
                 }
                 else
                 {
                     Console.WriteLine("Ne postoji knjiga sa datim id-em");
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Brisanje knjige",
+                        Result = "Autorizacija neuspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return false;
                 }
             }
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Brisanje knjige",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
         }
@@ -963,18 +1461,76 @@ namespace Service
                 {
                     Database.korisnici.Remove(idKorisnika);
                     Console.WriteLine("Korisnik uspesno obrisan");
+                    var log = new LogEntry
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Brisanje korisnika",
+                        Result = "Autorizacija uspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
 
+                    }
                     return true;
                 }
                 else
                 {
                     Console.WriteLine("Ne postoji korisnik sa datim id-em");
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                        Action = "Brisanje knjige",
+                        Result = "Autorizacija neuspesna"
+                    };
+                    string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                    if (i != null)
+                    {
+                        if (i.Contains(','))
+                        {
+                            _fileLogger.LogToTextFile(log);
+                        }
+                        else
+                        {
+                            _fileLogger.LogToXmlFile(log);
+                        }
+
+                    }
                     return false;
                 }
             }
             else
             {
                 Console.WriteLine("Nema permisiju");
+                var log = new LogEntry
+                {
+                    Timestamp = DateTime.Now,
+                    Username = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name),
+                    Action = "Brisanje korisnika",
+                    Result = "Autorizacija neuspesna"
+                };
+                string i = Formatter.ParseName(ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                if (i != null)
+                {
+                    if (i.Contains(','))
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                }
             }
             return false;
             

@@ -8,9 +8,24 @@ namespace Manager
 {
     public class LogEntry
     {
+        public LogEntry(DateTime timestamp, string username, string action, string result)
+        {
+            Timestamp = timestamp;
+            Username = username;
+            Action = action;
+            Result = result;
+        }
+
+        public LogEntry()
+        {
+
+        }
+
         public DateTime Timestamp { get; set; }
         public string Username { get; set; }
         public string Action { get; set; }
-        public bool Result { get; set; }
+        public string Result { get; set; }
+
+        
     }
 }

@@ -11,7 +11,7 @@ namespace Manager
     {
         private void InitializeUsersFromXml1()
         {
-            XDocument doc = XDocument.Load("C:/Users/Nina/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
+            XDocument doc = XDocument.Load("C:/Users/Vedrana/Desktop/ProjekatSBES/SBES_Tim5_Projekat24/Projekat_SBES/Manager/acl.xml");
 
             var users = doc.Root.Elements("user");
             foreach (var userElement in users)
