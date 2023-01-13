@@ -1,5 +1,6 @@
 ﻿using Common;
 using Manager;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,14 @@ using System.Threading.Tasks;
 
 namespace Client
 {
+
     class Program
     {
         static void Main(string[] args)
         {
 
-            //System.Diagnostics.Debugger.Launch();
-            string srvCertCN = "wcfservice";
+        //System.Diagnostics.Debugger.Launch();
+        string srvCertCN = "wcfservice";
 
             NetTcpBinding binding = new NetTcpBinding();
             NetTcpBinding binding1 = new NetTcpBinding();
@@ -100,22 +102,39 @@ namespace Client
 
                 using (ClientProxy proxy = new ClientProxy(binding, address))
                 {
-                    Console.WriteLine("Klijent je uspesno pokrenut.");
+                     
+                     Console.WriteLine("Klijent - Windows je uspesno pokrenut.");
 
 
                     Knjiga k = new Knjiga(ZanrKnjige.Drama, "Lovac na zmajeve", new Autor("Haled", "Hoseini", "1965"));
                     proxy.DodajKnjigu(3, k);
-                    Console.WriteLine(k);
+                    Database.knjige.Add(3, k);
                     Knjiga k1 = new Knjiga(ZanrKnjige.Triler, "Jedini izlaz", new Autor("Marko", "Popovic", "1978"));
                     proxy.DodajKnjigu(4, k1);
-                    Console.WriteLine(k1);
+                    Database.knjige.Add(4, k1);
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Knjige koje se trenutno nalaze u biblioteci:\n");
+                    foreach (Knjiga knjiga in Database.knjige.Values)
+                    {
+                        Console.WriteLine(knjiga);
+                    }
+                    Console.WriteLine("\n");
+
                     Knjiga k2 = new Knjiga(ZanrKnjige.Misterija, "Igra", new Autor("Skot", "Kerso", "1982"));
                     proxy.IzmijeniKnjigu(4, k2);
-                    Console.WriteLine(k2);
                     Knjiga k3 = new Knjiga(ZanrKnjige.Komedija, "Bio jednom jedan strah", new Autor("Jovica", "Tisma", "1958"));
                     proxy.DodajKnjigu(5, k3);
                     proxy.ObrisiKnjigu(3);
+                    Database.knjige.Remove(3);
                     proxy.ObrisiKnjigu(6);
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Knjige koje se nalaze u biblioteci posle brisanja:\n");
+                    foreach (Knjiga knjiga in Database.knjige.Values)
+                    {
+                        Console.WriteLine(knjiga);
+                    }
+                    Console.WriteLine("\n");
+
 
                     Autor a = new Autor("Ivo", "Andric", "1444");
                     proxy.DodajAutora(100, a);

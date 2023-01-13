@@ -21,3 +21,4 @@ C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Common\b
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Common\obj\Debug\Common.dll
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Common\obj\Debug\Common.pdb
+C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Common\obj\Debug\Common.csproj.AssemblyReference.cache

@@ -9,7 +9,7 @@
 		<permission type="modify">modify</permission>
 		<permission type="manage">manage</permission>
 	</user>
-	<user name="Vedrana">
+	<user name="lenovo">
 		<permission type="read">read</permission>
 		<permission type="delete">delete</permission>
     <permission type="modify">modify</permission>

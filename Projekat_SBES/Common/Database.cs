@@ -12,6 +12,11 @@ namespace Common
         public static Dictionary<int, Autor> autori = new Dictionary<int, Autor>();
         public static Dictionary<int, Korisnik> korisnici = new Dictionary<int, Korisnik>();
 
+        public static Dictionary<int, Knjiga> VratiSveKnjige()
+        {
+            return knjige;
+        }
+
         static Database()
         {
             Knjiga k1 = new Knjiga(ZanrKnjige.Drama, "Alhemicar", new Autor("Paulo", "Koeljo", "1947"));
@@ -34,7 +39,7 @@ namespace Common
             korisnici.Add(2, ko2);
 
 
-
         }
+
     }
 }

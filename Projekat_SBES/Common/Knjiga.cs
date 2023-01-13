@@ -11,6 +11,7 @@ namespace Common
     public enum ZanrKnjige {[EnumMember] Triler, [EnumMember] Horor, [EnumMember] Drama, [EnumMember] Misterija, [EnumMember] Komedija }
 
     [DataContract]
+    [Serializable]
     public class Knjiga
     {
        
@@ -37,7 +38,7 @@ namespace Common
 
         public override string ToString()
         {
-            return String.Format("Knjiga: {0} {1}, Autor: {2}", NazivKnjige, Zanr, Autor);
+            return String.Format("\nKnjiga:\nNaziv knjige: {0}\nZanr knjige: {1}\nAutor knjige: {2}", NazivKnjige, Zanr, Autor);
         }
 
     }

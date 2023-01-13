@@ -15,7 +15,28 @@ namespace Service
     public class Biblioteka : IBiblioteka
     {
 
-        
+        private readonly string _textFilePath;
+        private readonly string _xmlFilePath;
+        private readonly FileLogger _fileLogger;
+
+
+        public Biblioteka()
+        {
+            _textFilePath = @"C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt";
+            _xmlFilePath = @"C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml";
+            _fileLogger = new FileLogger(_textFilePath, _xmlFilePath);
+        }
+
+        public Biblioteka(string textFilePath = @"C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt",
+                          string xmlFilePath = @"C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml")
+        {
+            _textFilePath = textFilePath;
+            _xmlFilePath = xmlFilePath;
+            _fileLogger = new FileLogger(_textFilePath, _xmlFilePath);
+        }
+
+
+
         public bool DodajAutora(int idAutora,Autor autor)
         {
             bool hasPermission = false;
@@ -180,15 +201,55 @@ namespace Service
                 if (Database.knjige.ContainsKey(idKnjige))
                 {
                     Console.WriteLine("Knjiga sa datim id-em vec postoji.");
+                    //kreiramo LogEntry i logujemo u odgovarajuću datoteku
+                    /*
+                    LogEntry log = new LogEntry()
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = ServiceSecurityContext.Current.WindowsIdentity.Name,
+                        Action = "Dodavanje knjige",
+                        Result = false
+                    };
+                    if (ServiceSecurityContext.Current.WindowsIdentity != null)
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                    */
+                    
+
                     return false;
                 }
                 else
                 {
                     Database.knjige.Add(idKnjige, knjiga);
                     Console.WriteLine("Knjiga je uspesno dodata.");
+                    //logovanje uspeha
+                    /*
+                    var log = new LogEntry
+                    {
+                        Timestamp = DateTime.Now,
+                        Username = ServiceSecurityContext.Current.PrimaryIdentity.Name,
+                        Action = "Dodavanje knjige",
+                        Result = true
+                    };
+                    if (ServiceSecurityContext.Current.WindowsIdentity != null)
+                    {
+                        _fileLogger.LogToTextFile(log);
+                    }
+                    else
+                    {
+                        _fileLogger.LogToXmlFile(log);
+                    }
+                    */
                     return true;
                 }
+                   
             }
+                    
             else
             {
                 Console.WriteLine("Nema permisiju");
