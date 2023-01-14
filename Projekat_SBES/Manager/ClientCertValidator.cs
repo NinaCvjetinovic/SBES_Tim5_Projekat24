@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Selectors;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +14,7 @@ namespace Manager
     {
         
         X509Chain chain;
+        
 
         public ClientCertValidator()
         {
@@ -31,6 +34,7 @@ namespace Manager
        
             if (certificate.Subject.Equals(certificate.Issuer))
             {
+
                 throw new Exception("Sertifikat je self-signed.");
             }
 

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Manager
@@ -27,7 +28,8 @@ namespace Manager
         }
         public void LogToXmlFile(LogEntry logEntry) //logovanje u xml datoteku
         {
-            XElement logElement = new XElement("logEntry", new XAttribute("timestamp", logEntry.Timestamp),
+
+            XElement logElement = new XElement("logEntry", new XAttribute("timestamp", XmlConvert.ToString(logEntry.Timestamp, "yyyy-MM-dd HH:mm:ss")),
                                                            new XAttribute("username", logEntry.Username),
                                                            new XAttribute("action", logEntry.Action),
                                                            new XAttribute("result", logEntry.Result)

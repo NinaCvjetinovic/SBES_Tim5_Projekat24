@@ -20,3 +20,8 @@ C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager
 C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csproj.GenerateResource.cache
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.AuditEventFile.resources
 C:\Users\lenovo\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csproj.GenerateResource.cache
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.AuditEventFile.resources
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csproj.GenerateResource.cache
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\bin\Debug\Common.dll
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\bin\Debug\Common.pdb
+C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csproj.CopyComplete
