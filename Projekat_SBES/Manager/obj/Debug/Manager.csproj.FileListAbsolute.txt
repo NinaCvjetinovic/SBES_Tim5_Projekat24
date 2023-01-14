@@ -25,3 +25,6 @@ C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\ob
 C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\bin\Debug\Common.dll
 C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\bin\Debug\Common.pdb
 C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csproj.CopyComplete
+C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\bin\Debug\Common.dll
+C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\bin\Debug\Common.pdb
+C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\obj\Debug\Manager.csproj.CopyComplete

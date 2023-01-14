@@ -42,7 +42,7 @@ namespace Common
 
         public override string ToString()
         {
-            return String.Format("Ime korisnika: {0}, prezime korisnika: {1}, broj iznajmljenih knjiga: {2}", ImeKorisnika, PrezimeKorisnika, BrojKnjiga);
+            return String.Format("\time: {0}, prezime: {1}, broj iznajmljenih knjiga: {2}", ImeKorisnika, PrezimeKorisnika, BrojKnjiga);
 
         }
     }

@@ -17,7 +17,7 @@ namespace Manager
             foreach (var userElement in users)
             {
                 string username = userElement.Attribute("name").Value;
-                //string organization = userElement.Attribute("organization").Value;
+                
                 var privileges = userElement.Elements("permission").Select(p => p.Value);
 
             }

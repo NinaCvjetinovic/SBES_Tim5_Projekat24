@@ -22,13 +22,13 @@ namespace Service
 
         public Biblioteka()
         {
-            _textFilePath = @"C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt";
-            _xmlFilePath = @"C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml";
+            _textFilePath = @"C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt";
+            _xmlFilePath = @"C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml";
             _fileLogger = new FileLogger(_textFilePath, _xmlFilePath);
         }
 
-        public Biblioteka(string textFilePath = @"C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt",
-                          string xmlFilePath = @"C:\Users\Nina\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml")
+        public Biblioteka(string textFilePath = @"C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logWindows.txt",
+                          string xmlFilePath = @"C:\Users\Vedrana\Desktop\ProjekatSBES\SBES_Tim5_Projekat24\Projekat_SBES\Manager\logCertificates.xml")
         {
             _textFilePath = textFilePath;
             _xmlFilePath = xmlFilePath;

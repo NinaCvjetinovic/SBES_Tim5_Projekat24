@@ -18,7 +18,7 @@ namespace Manager
             _textFilePath = textFilePath;
             _xmlFilePath = xmlFilePath;
         }
-        public void LogToTextFile(LogEntry logEntry) //logovanje u tekstualnu datoteku
+        public void LogToTextFile(LogEntry logEntry) 
         {
 
             using (StreamWriter writer = new StreamWriter(_textFilePath, true))
@@ -26,7 +26,7 @@ namespace Manager
                 writer.WriteLine($"{logEntry.Timestamp},{logEntry.Username},{logEntry.Action},{logEntry.Result}");
             }
         }
-        public void LogToXmlFile(LogEntry logEntry) //logovanje u xml datoteku
+        public void LogToXmlFile(LogEntry logEntry) 
         {
 
             XElement logElement = new XElement("logEntry", new XAttribute("timestamp", XmlConvert.ToString(logEntry.Timestamp, "yyyy-MM-dd HH:mm:ss")),

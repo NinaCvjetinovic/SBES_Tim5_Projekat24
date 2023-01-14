@@ -35,7 +35,7 @@ namespace Common
 
         public override string ToString()
         {
-            return String.Format("Ime autora: {0}, prezime autora: {1}, godina rodjenja: {2}.", ImeAutora, PrezimeAutora, GodinaRodjenja);
+            return String.Format("\time: {0}, prezime: {1}, godina rodjenja: {2}.", ImeAutora, PrezimeAutora, GodinaRodjenja);
         }
 
     }

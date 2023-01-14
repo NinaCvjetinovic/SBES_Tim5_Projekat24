@@ -16,14 +16,8 @@ namespace Client
 
     class Program
     {
-
-
         static void Main(string[] args)
         {
-           
-
-            //System.Diagnostics.Debugger.Launch();
-
             Biblioteka biblioteka = new Biblioteka();
             FileLogger fileLogger = biblioteka._fileLogger;
 
@@ -50,7 +44,7 @@ namespace Client
 
             Console.WriteLine("Korisnik koji je pokrenuo klijenta:" + WindowsIdentity.GetCurrent().Name);
 
-            Console.WriteLine("------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------------------");
 
             string subjectName = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
 
@@ -69,9 +63,6 @@ namespace Client
 
                 using (ClientProxy proxy1 = new ClientProxy(binding1, address1))
                 {
-
-
-
                     LogEntry log = new LogEntry()
                     {
                         Timestamp = DateTime.Now,
@@ -137,12 +128,12 @@ namespace Client
             else
             {
                 Console.WriteLine("No certificate with subject name '{0}' was found.", subjectName);
-
+                Console.WriteLine("------------------------------------------------------------------------");
                
                     using (ClientProxy proxy = new ClientProxy(binding, address))
                     {
 
-                        Console.WriteLine("Klijent - Windows je uspesno pokrenut.");
+                        Console.WriteLine("Klijent - Windows je uspesno pokrenut.\n");
 
                         LogEntry log = new LogEntry()
                         {
@@ -171,14 +162,15 @@ namespace Client
                         Knjiga k1 = new Knjiga(ZanrKnjige.Triler, "Jedini izlaz", new Autor("Marko", "Popovic", "1978"));
                         proxy.DodajKnjigu(4, k1);
                         Database.knjige.Add(4, k1);
-                        Console.WriteLine("\n");
-                        Console.WriteLine("Knjige koje se trenutno nalaze u biblioteci:\n");
+                        
+                        Console.WriteLine("------------------------------------------------------------------------");
+                        Console.WriteLine("Knjige koje se trenutno nalaze u biblioteci:");
                         foreach (Knjiga knjiga in Database.knjige.Values)
                         {
                             Console.WriteLine(knjiga);
                         }
                         Console.WriteLine("\n");
-
+                        Console.WriteLine("------------------------------------------------------------------------");
                         Knjiga k2 = new Knjiga(ZanrKnjige.Misterija, "Igra", new Autor("Skot", "Kerso", "1982"));
                         proxy.IzmijeniKnjigu(4, k2);
                         Knjiga k3 = new Knjiga(ZanrKnjige.Komedija, "Bio jednom jedan strah", new Autor("Jovica", "Tisma", "1958"));
@@ -186,13 +178,14 @@ namespace Client
                         proxy.ObrisiKnjigu(3);
                         Database.knjige.Remove(3);
                         proxy.ObrisiKnjigu(6);
-                        Console.WriteLine("\n");
-                        Console.WriteLine("Knjige koje se nalaze u biblioteci posle brisanja:\n");
+                        
+                        Console.WriteLine("------------------------------------------------------------------------");
+                        Console.WriteLine("Knjige koje se nalaze u biblioteci posle brisanja:");
                         foreach (Knjiga knjiga in Database.knjige.Values)
                         {
                             Console.WriteLine(knjiga);
                         }
-                        Console.WriteLine("\n");
+                        Console.WriteLine("------------------------------------------------------------------------\n");
 
 
                         Autor a = new Autor("Ivo", "Andric", "1444");
@@ -200,6 +193,13 @@ namespace Client
                         Korisnik kor = new Korisnik("Mika", "Peric", true, 2);
                         proxy.DodajKorisnika(500, kor);
                         proxy.IznajmiKnjigu(500, "Bio jednom jedan strah");
+                        Console.WriteLine("\n");
+                        Console.WriteLine("------------------------------------------------------------------------\n");
+                        Console.WriteLine("Korisnici: ");
+                        foreach (Korisnik korisnik in Database.korisnici.Values)
+                        {
+                            Console.WriteLine(korisnik);
+                        }
                         Console.ReadLine();
                     }
                       

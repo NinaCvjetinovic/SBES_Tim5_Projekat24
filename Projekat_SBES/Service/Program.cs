@@ -17,7 +17,7 @@ namespace Service
         static void Main(string[] args)
         {
 
-            //System.Diagnostics.Debugger.Launch();
+            
 
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:49685/Biblioteka";
@@ -66,8 +66,9 @@ namespace Service
                 Console.WriteLine(e.Message);
             }
 
-
+            Console.WriteLine("------------------------------------------------------------------------");
             Console.WriteLine("Korisnik koji je pokrenuo servis:" + WindowsIdentity.GetCurrent().Name);
+            Console.WriteLine("------------------------------------------------------------------------");
             Console.ReadLine();
 
         }

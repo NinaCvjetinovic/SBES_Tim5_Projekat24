@@ -38,7 +38,7 @@ namespace Common
 
         public override string ToString()
         {
-            return String.Format("\nKnjiga:\nNaziv knjige: {0}\nZanr knjige: {1}\nAutor knjige: {2}", NazivKnjige, Zanr, Autor);
+            return String.Format("\nKnjiga:\n\tnaziv: {0}\n\tzanr: {1}\n\tautor: {2}", NazivKnjige, Zanr, Autor);
         }
 
     }
