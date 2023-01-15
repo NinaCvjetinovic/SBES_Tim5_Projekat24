@@ -1,14 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logElement>
-  <logEntry timestamp="2023-01-14 19:31:31" username="wcfclient" action="" result="Uspjesna autentifikacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Read" result="Uspjesna autorizacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Read" result="Uspjesna autorizacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Modify" result="Uspjesna autorizacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Delete" result="Uspjesna autorizacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Delete" result="Uspjesna autorizacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Read" result="Uspjesna autorizacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Manage" result="Uspjesna autorizacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Read" result="Uspjesna autorizacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Read" result="Uspjesna autorizacija" />
-  <logEntry timestamp="2023-01-14 19:31:31" username="CN=wcfclient, OU=organizacija; 178A966E3545A7EB8C0CBB22364D233F36983DE1" action="Manage" result="Uspjesna autorizacija" />
+
 </logElement>

@@ -42,16 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuditEventFile.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AuditEventFile.resx</DependentUpon>
-    </Compile>
     <Compile Include="CertManager.cs" />
     <Compile Include="ClientCertValidator.cs" />
     <Compile Include="FileLogger.cs" />
     <Compile Include="Formatter.cs" />
-    <Compile Include="InitializeUsersFromXml.cs" />
     <Compile Include="LogEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCertValidator.cs" />
@@ -60,12 +54,6 @@
     <Content Include="acl.xml" />
     <Content Include="logCertificates.xml" />
     <Content Include="logWindows.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="AuditEventFile.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AuditEventFile.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

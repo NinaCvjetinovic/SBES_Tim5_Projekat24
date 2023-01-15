@@ -31,7 +31,9 @@ namespace Manager
 				string organizacija = cert.SubjectName.Name.Split(',')[1].Split('=')[1];
 				string ime = cert.SubjectName.Name.Split(',')[0].Split('=')[1];
 				if (cert.SubjectName.Name.Equals(string.Format("CN={0},OU={1}", ime, organizacija))) ;
+				
 					return cert;
+				
 				
 				
 			}

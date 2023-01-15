@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <acl>
 	<user name="pera">
+		<permission type="read">read</permission>
 		<permission type="delete">delete</permission>
 	</user>
 	<user name="wcfclient">
@@ -9,10 +10,10 @@
 		<permission type="modify">modify</permission>
 		<permission type="manage">manage</permission>
 	</user>
-	<user name="Vedrana">
+	<user name="Nina">
 		<permission type="read">read</permission>
-		
-    <permission type="modify">modify</permission>
-    <permission type="manage">manage</permission>
+		<permission type="delete">delete</permission>
+        <permission type="modify">modify</permission>
+        <permission type="manage">manage</permission>
 	</user>
 </acl>

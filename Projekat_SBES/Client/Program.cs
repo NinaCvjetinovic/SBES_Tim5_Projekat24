@@ -88,31 +88,52 @@ namespace Client
 
                     try
                     {
-                      
+
 
                         Knjiga k = new Knjiga(ZanrKnjige.Drama, "Lovac na zmajeve", new Autor("Haled", "Hoseini", "1965"));
-                        Korisnik kor = new Korisnik("Milica", "Milutinovic", true, 3);
                         proxy1.DodajKnjigu(3, k);
-                        Console.WriteLine(k);
+                        Database.knjige.Add(3, k);
                         Knjiga k1 = new Knjiga(ZanrKnjige.Triler, "Jedini izlaz", new Autor("Marko", "Popovic", "1978"));
                         proxy1.DodajKnjigu(4, k1);
-                        Console.WriteLine(k1);
+                        Database.knjige.Add(4, k1);
+
+                        Console.WriteLine("------------------------------------------------------------------------");
+                        Console.WriteLine("Knjige koje se trenutno nalaze u biblioteci:");
+                        foreach (Knjiga knjiga in Database.knjige.Values)
+                        {
+                            Console.WriteLine(knjiga);
+                        }
+                        Console.WriteLine("\n");
+                        Console.WriteLine("------------------------------------------------------------------------");
                         Knjiga k2 = new Knjiga(ZanrKnjige.Misterija, "Igra", new Autor("Skot", "Kerso", "1982"));
-                        proxy1.IzmijeniKnjigu(4, k2);
-                        Console.WriteLine(k2);
+                        proxy1.IzmijeniKnjigu(3, k2);
+                        Knjiga k3 = new Knjiga(ZanrKnjige.Komedija, "Bio jednom jedan strah", new Autor("Jovica", "Tisma", "1958"));
+                        proxy1.DodajKnjigu(5, k3);
                         proxy1.ObrisiKnjigu(3);
+                        Database.knjige.Remove(3);
                         proxy1.ObrisiKnjigu(6);
-                        proxy1.DodajKorisnika(888, kor);
-                        proxy1.IznajmiKnjigu(888, "Lovac na zmajeve");
+
+                        Console.WriteLine("------------------------------------------------------------------------");
+                        Console.WriteLine("Knjige koje se nalaze u biblioteci posle brisanja:");
+                        foreach (Knjiga knjiga in Database.knjige.Values)
+                        {
+                            Console.WriteLine(knjiga);
+                        }
+                        Console.WriteLine("------------------------------------------------------------------------\n");
+
 
                         Autor a = new Autor("Ivo", "Andric", "1444");
                         proxy1.DodajAutora(100, a);
-                        Korisnik kor2 = new Korisnik("Mika", "Peric", true, 2);
-                        proxy1.DodajKorisnika(500, kor2);
+                        Korisnik kor = new Korisnik("Mika", "Peric", true, 2);
+                        proxy1.DodajKorisnika(500, kor);
                         proxy1.IznajmiKnjigu(500, "Bio jednom jedan strah");
-                        Console.ReadLine();
-
-
+                        Console.WriteLine("\n");
+                        Console.WriteLine("------------------------------------------------------------------------\n");
+                        Console.WriteLine("Korisnici: ");
+                        foreach (Korisnik korisnik in Database.korisnici.Values)
+                        {
+                            Console.WriteLine(korisnik);
+                        }
                         Console.ReadLine();
                     }
                     catch (Exception e)
@@ -172,7 +193,7 @@ namespace Client
                         Console.WriteLine("\n");
                         Console.WriteLine("------------------------------------------------------------------------");
                         Knjiga k2 = new Knjiga(ZanrKnjige.Misterija, "Igra", new Autor("Skot", "Kerso", "1982"));
-                        proxy.IzmijeniKnjigu(4, k2);
+                        proxy.IzmijeniKnjigu(3, k2);
                         Knjiga k3 = new Knjiga(ZanrKnjige.Komedija, "Bio jednom jedan strah", new Autor("Jovica", "Tisma", "1958"));
                         proxy.DodajKnjigu(5, k3);
                         proxy.ObrisiKnjigu(3);
